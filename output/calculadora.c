@@ -1,49 +1,45 @@
-//biblioteca padrao de entrada e saida
 #include <stdio.h>
-#include <stdlib.h>
 
-//funcao principal
-int main(){
-    //variaveis do tipo float
-    float var1, var2, resultado;
-    //variavel do tipo inteiro
-    int opcao;
-    
-    //mensagem para o usuario
-    printf("Digite a operacao desejada: \n");
-    printf("1 - soma\n");
-    printf("2 - subtracao\n");
-    printf("3 - multiplicacao\n");
-    printf("4 - divisao\n");
-    scanf("%d", &opcao);
+int main() {
+    char op;
+    double num1, num2, result;
 
-    //mensagem para o usuario
-    printf("Digite o valor do primeiro numero: ");
+    while (1) {
+        printf("Enter an operator (+, -, *, /) or 'q' to quit: ");
+        scanf(" %c", &op);
 
-    //entrada de dados
-    scanf("%f", &var1);
+        if (op == 'q') {
+            break;
+        }
 
-    printf("Digite o valor do segundo numero: ");
-    scanf("%f", &var2);
-    
-    //mensagem para o usuario
-    if (opcao == 1){
-        resultado = var1 + var2;
-    } else if (opcao == 2) {
-        resultado = var1 - var2;
-    } else if (opcao == 3) {
-        resultado = var1 * var2;
-    } else if (opcao == 4) {
-        resultado = var1 / var2;
-    } else {
-        printf("opcao invalida\n");
+        printf("Enter two operands: ");
+        scanf("%lf %lf", &num1, &num2);
+
+        switch (op) {
+            case '+':
+                result = num1 + num2;
+                printf("%.2lf + %.2lf = %.2lf\n", num1, num2, result);
+                break;
+            case '-':
+                result = num1 - num2;
+                printf("%.2lf - %.2lf = %.2lf\n", num1, num2, result);
+                break;
+            case '*':
+                result = num1 * num2;
+                printf("%.2lf * %.2lf = %.2lf\n", num1, num2, result);
+                break;
+            case '/':
+                if (num2 != 0) {
+                    result = num1 / num2;
+                    printf("%.2lf / %.2lf = %.2lf\n", num1, num2, result);
+                } else {
+                    printf("Error! Division by zero.\n");
+                }
+                break;
+            default:
+                printf("Error! Operator is not correct\n");
+        }
     }
 
-    printf("o resultado da operacao e: %.1f\n", resultado);
-    
-    //pausa o programa
-    system("pause");
-   
-    //retorno da funcao
-	return 0;
+    return 0;
 }
