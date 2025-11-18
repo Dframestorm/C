@@ -11,7 +11,7 @@ struct No {
 /*-- Bloco 2. Função Auxiliar: Criar Novo Nó --*/
 struct No* criarNo(int valor) {
     struct No* novoNo = (struct No*)malloc(sizeof(struct No));
-    if (novoNo == NULL) { // Corrigido: A verificação correta é se a alocação falhou (== NULL)
+    if (novoNo == NULL) { 
         printf("Erro de alocacao de memoria\n");
         exit(1);
     }
@@ -115,7 +115,7 @@ struct No* removerNo(struct No* raiz, int valor) {
 void liberarArvore(struct No* raiz) {
     if (raiz != NULL) {
         liberarArvore(raiz->esquerda);
-        liberarArvore(raiz->direita); // Corrigido: Erro de digitação "LiberarArvore"
+        liberarArvore(raiz->direita); 
         free(raiz);
     }
 }
